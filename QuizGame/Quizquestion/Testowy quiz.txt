@@ -1,0 +1,5 @@
+Pytanie do quizu ?
+1. Tak
+2. Nie
+>3. Może
+4. Być może

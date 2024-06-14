@@ -1,9 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QuizGame
 {
@@ -12,6 +8,7 @@ namespace QuizGame
         static string path = Directory.GetCurrentDirectory();
         static string fixedPath = path.Remove(path.IndexOf("bin"), 9);
         static string goodPath = fixedPath + @"Quizquestion\";
+        static int filesCount = Directory.GetFiles(goodPath, "*", SearchOption.TopDirectoryOnly).Length;
 
         static int mainScore = 0;
 
@@ -23,7 +20,15 @@ namespace QuizGame
         /// <summary>
         /// Główna funkcja, która wybiera i odpala quizy
         /// 
-        /// Aby dodać qnowy quiz należy dodać  //Commends.ColorsWrite(ConsoleColor.DarkCyan, "Następny numer oraz nazwe quiza");
+        /// Aby dodać qnowy quiz należy dodać plik do folderu Quizquestion w strukturze 
+        /// Pytanie ?
+        /// 1. Odpowiedż
+        /// 2. Odpowiedż
+        /// 3. Odpowiedż
+        /// >4. Odpowiedż
+        /// 
+        /// oraz komendę 
+        /// Commends.ColorsWrite(ConsoleColor.DarkCyan, "Następny numer oraz nazwe quiza");
         /// oraz dodać do switcha 
         /// 
         /// case następny numer:
@@ -42,10 +47,11 @@ namespace QuizGame
                 Commends.ColorsLine(ConsoleColor.DarkCyan, "Witaj w grze quizowej! Mam przygotowanych parę quizów dla Ciebie.", 'n');
                 Commends.ColorsLine(ConsoleColor.DarkCyan, "1. Quiz o filmie Inside Out.");
                 Commends.ColorsLine(ConsoleColor.DarkCyan, "2. Quiz o filmie Lord of The Rings.", 'n');
+                //Tutaj można dodać komendę Commend.ColorsWrite
 
                 Commends.ColorsLine(ConsoleColor.DarkCyan, $"Twój główny wynik we wszystkich quizach to {mainScore}\nWpisz '-1' jeśli chcesz zamknąć program");
 
-                var answer = Commends.Checking("Jaką kategorie wybierasz :");
+                int answer = Commends.Checking("Jaką kategorie wybierasz :",1,filesCount,-1);
 
                 switch(answer)
                 {
@@ -58,6 +64,7 @@ namespace QuizGame
                     case -1:
                         playing = false;
                         break;
+                    //Tutaj można dodać komendę case :
                     
                 }
 
@@ -66,12 +73,18 @@ namespace QuizGame
 
         }
 
+        /// <summary>
+        /// Metoda odpowiedzialna za odczytanie pliku, wyświetlanie zawartości, sczytywanie odpowiedzi i 
+        /// przypisywanie punktów
+        /// </summary>
+        /// <param name="path">Zawiera nazwe pliku w folderze Quizquestion</param>
+
         private static void Quiz(string path)
         {
             Console.Clear();
 
             string[] quiz = File.ReadAllLines(goodPath + path);
-            int answear = 0;
+            int answear;
             int goodAnswear = 1;
             int score = 0;
 
