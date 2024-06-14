@@ -5,6 +5,6 @@ Zrobiłem tą aplikacje tak że dodanie nowych quizów to nie problem, wystarczy
 
 Pytanie zakończe pytajnikiem?
 1. Pierwsza odpowiedź która jest błędna
->2. Druga odpowiedź która jest poprawna co sygnalizuje znak ">"
+>2. Druga odpowiedź która jest poprawna, przed cyfrą z początku odpowiedzi musi się znajdować znak ">"
 3. Trzecia odpowiedź która jest błędna
 4. Czwarta odpowiedź która jest błędna
