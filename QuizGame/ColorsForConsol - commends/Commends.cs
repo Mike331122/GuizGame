@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dice_Game
+namespace QuizGame
 {
      static class Commends
     {

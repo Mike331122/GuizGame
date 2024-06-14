@@ -1,0 +1,7 @@
+D:\Projekty\VisualStudio\QuizGame\GuizGame\QuizGame\bin\Debug\QuizGame.exe.config
+D:\Projekty\VisualStudio\QuizGame\GuizGame\QuizGame\bin\Debug\QuizGame.exe
+D:\Projekty\VisualStudio\QuizGame\GuizGame\QuizGame\bin\Debug\QuizGame.pdb
+D:\Projekty\VisualStudio\QuizGame\GuizGame\QuizGame\obj\Debug\QuizGame.csproj.AssemblyReference.cache
+D:\Projekty\VisualStudio\QuizGame\GuizGame\QuizGame\obj\Debug\QuizGame.csproj.CoreCompileInputs.cache
+D:\Projekty\VisualStudio\QuizGame\GuizGame\QuizGame\obj\Debug\QuizGame.exe
+D:\Projekty\VisualStudio\QuizGame\GuizGame\QuizGame\obj\Debug\QuizGame.pdb
