@@ -20,7 +20,17 @@ namespace QuizGame
             Asking();
             
         }
-
+        /// <summary>
+        /// Główna funkcja, która wybiera i odpala quizy
+        /// 
+        /// Aby dodać qnowy quiz należy dodać  //Commends.ColorsWrite(ConsoleColor.DarkCyan, "Następny numer oraz nazwe quiza");
+        /// oraz dodać do switcha 
+        /// 
+        /// case następny numer:
+        ///     Quiz(Nazwa pliku tekstowego)
+        ///     break;
+        /// 
+        /// </summary>
         static void Asking()
         {
             bool playing = true;
@@ -31,9 +41,11 @@ namespace QuizGame
 
                 Commends.ColorsLine(ConsoleColor.DarkCyan, "Witaj w grze quizowej! Mam przygotowanych parę quizów dla Ciebie.", 'n');
                 Commends.ColorsLine(ConsoleColor.DarkCyan, "1. Quiz o filmie Inside Out.");
-                //Commends.ColorsLine(ConsoleColor.DarkCyan, "2. Quiz.");
+                Commends.ColorsLine(ConsoleColor.DarkCyan, "2. Quiz o filmie Lord of The Rings.", 'n');
 
-                int answer = Commends.Checking("Jaką kategorie wybierasz :", 1, 2);
+                Commends.ColorsLine(ConsoleColor.DarkCyan, $"Twój główny wynik we wszystkich quizach to {mainScore}\nWpisz '-1' jeśli chcesz zamknąć program");
+
+                var answer = Commends.Checking("Jaką kategorie wybierasz :");
 
                 switch(answer)
                 {
@@ -41,7 +53,12 @@ namespace QuizGame
                         Quiz("Inside out.txt");
                         break;
                     case 2:
+                        Quiz("Lord of The Rings.txt");
                         break;
+                    case -1:
+                        playing = false;
+                        break;
+                    
                 }
 
             }
@@ -90,6 +107,7 @@ namespace QuizGame
                 }
 
             }
+            mainScore += score;
 
             Commends.ColorsLine(ConsoleColor.DarkBlue, $"Gratulacje!! Twój wynik to {score}");
 
