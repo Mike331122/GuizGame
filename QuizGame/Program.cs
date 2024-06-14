@@ -29,7 +29,7 @@ namespace QuizGame
         /// >4. Odpowiedż
         /// 
         /// case następny numer:
-        ///     Quiz(Nazwa pliku tekstowego)
+        ///     Quiz(fileNames[answer - 1])
         ///     break;
         /// 
         /// </summary>
@@ -46,9 +46,9 @@ namespace QuizGame
                 for(int i = 0; i < filesCount; i++)
                 {
                     fileNames[i] = fileNames[i].Remove(0, fileNames[i].IndexOf("Quizquestion") + 13);
-                    fileNames[i] = fileNames[i].Replace(".txt", "");
+                    string spareName = fileNames[i].Replace(".txt", "");
 
-                    Commends.ColorsWrite(ConsoleColor.DarkCyan, $"{i + 1}. Quiz o filmie {fileNames[i]}.", 'y');
+                    Commends.ColorsWrite(ConsoleColor.DarkCyan, $"{i + 1}. Quiz o filmie {spareName}.", 'y');
                 }
 
                 Commends.ColorsLine(ConsoleColor.DarkCyan, $"\nTwój główny wynik we wszystkich quizach to {mainScore}\nWpisz '-1' jeśli chcesz zamknąć program");
@@ -58,10 +58,13 @@ namespace QuizGame
                 switch(answer)
                 {
                     case 1:
-                        Quiz("Inside out.txt");
+                        Quiz(fileNames[answer - 1]);
                         break;
                     case 2:
-                        Quiz("Lord of The Rings.txt");
+                        Quiz(fileNames[answer - 1 ]);
+                        break;
+                    case 3:
+                        Quiz(fileNames[answer - 1]);
                         break;
                     case -1:
                         playing = false;
