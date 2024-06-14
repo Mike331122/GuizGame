@@ -9,6 +9,7 @@ namespace QuizGame
         static string fixedPath = path.Remove(path.IndexOf("bin"), 9);
         static string goodPath = fixedPath + @"Quizquestion\";
         static int filesCount = Directory.GetFiles(goodPath, "*", SearchOption.TopDirectoryOnly).Length;
+        static string[] fileNames = Directory.GetFiles(goodPath, "*", SearchOption.TopDirectoryOnly);
 
         static int mainScore = 0;
 
@@ -27,10 +28,6 @@ namespace QuizGame
         /// 3. Odpowiedż
         /// >4. Odpowiedż
         /// 
-        /// oraz komendę 
-        /// Commends.ColorsWrite(ConsoleColor.DarkCyan, "Następny numer oraz nazwe quiza");
-        /// oraz dodać do switcha 
-        /// 
         /// case następny numer:
         ///     Quiz(Nazwa pliku tekstowego)
         ///     break;
@@ -45,11 +42,16 @@ namespace QuizGame
                 Console.Clear();
 
                 Commends.ColorsLine(ConsoleColor.DarkCyan, "Witaj w grze quizowej! Mam przygotowanych parę quizów dla Ciebie.", 'n');
-                Commends.ColorsLine(ConsoleColor.DarkCyan, "1. Quiz o filmie Inside Out.");
-                Commends.ColorsLine(ConsoleColor.DarkCyan, "2. Quiz o filmie Lord of The Rings.", 'n');
-                //Tutaj można dodać komendę Commend.ColorsWrite
+                
+                for(int i = 0; i < filesCount; i++)
+                {
+                    fileNames[i] = fileNames[i].Remove(0, fileNames[i].IndexOf("Quizquestion") + 13);
+                    fileNames[i] = fileNames[i].Replace(".txt", "");
 
-                Commends.ColorsLine(ConsoleColor.DarkCyan, $"Twój główny wynik we wszystkich quizach to {mainScore}\nWpisz '-1' jeśli chcesz zamknąć program");
+                    Commends.ColorsWrite(ConsoleColor.DarkCyan, $"{i + 1}. Quiz o filmie {fileNames[i]}.", 'y');
+                }
+
+                Commends.ColorsLine(ConsoleColor.DarkCyan, $"\nTwój główny wynik we wszystkich quizach to {mainScore}\nWpisz '-1' jeśli chcesz zamknąć program");
 
                 int answer = Commends.Checking("Jaką kategorie wybierasz :",1,filesCount,-1);
 
